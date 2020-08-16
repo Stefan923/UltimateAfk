@@ -18,7 +18,7 @@ public class PlayerJoinListener implements Listener, MessageUtils {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        instance.getAfkPlayers().put(player.getName(), System.currentTimeMillis());
+        instance.getPlayers().put(player.getName(), System.currentTimeMillis());
     }
 
 }

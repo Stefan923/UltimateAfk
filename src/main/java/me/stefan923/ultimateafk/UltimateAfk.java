@@ -7,6 +7,7 @@ import me.stefan923.ultimateafk.settings.SettingsManager;
 import me.stefan923.ultimateafk.utils.LocationUtils;
 import me.stefan923.ultimateafk.utils.MessageUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -22,7 +23,8 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
 
     private FileConfiguration settings;
 
-    private HashMap<String, Long> afkPlayers;
+    private HashMap<String, Long> players;
+    private HashMap<String, Location> afkPlayers;
 
     @Override
     public void onEnable() {
@@ -35,6 +37,7 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
         languageManager = LanguageManager.getInstance();
         languageManager.setup(this);
 
+        players = new HashMap<>();
         afkPlayers = new HashMap<>();
 
         sendLogger("&8&l> &7&m------- &8&l( &3&lUltimateAfk &b&lby Stefan923 &8&l) &7&m------- &8&l<");
@@ -145,18 +148,35 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
     private void afkCheck() {
         getServer().getScheduler().scheduleAsyncRepeatingTask(instance, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (isAfk(player.getName())) {
-                    if (settings.getBoolean("Afk Settings.Teleport Afk Players")) {
-                        if (settings.isSet("Afk Settings.Teleport Location")) {
-                            player.teleport(deserializeLocation(settings.getString("Afk Settings.Teleport Location")));
-                        } else {
-                            sendLogger(formatAll(languageManager.getConfig().getString("General.Afk Location Not Set")));
-                        }
-                    }
-                    player.sendMessage(formatAll(languageManager.getConfig().getString("General.You Are Afk")));
+                if (isAfk(player.getName()) && !afkPlayers.containsKey(player.getName())) {
+                    setAfk(player);
                 }
             }
         }, 600, 600);
+    }
+
+    private void setAfk(Player player) {
+        afkPlayers.put(player.getName(), player.getLocation());
+
+        if (settings.getBoolean("Afk Settings.Teleport Afk Players")) {
+            if (settings.isSet("Afk Settings.Teleport Location")) {
+                player.teleport(deserializeLocation(settings.getString("Afk Settings.Teleport Location")));
+            } else {
+                sendLogger(formatAll(languageManager.getConfig().getString("General.Afk Location Not Set")));
+            }
+        }
+        Bukkit.getOnlinePlayers().forEach(onlinePlayer -> onlinePlayer.hidePlayer(player));
+        player.sendMessage(formatAll(languageManager.getConfig().getString("General.You Are Afk")));
+    }
+
+    public void setNotAfk(Player player) {
+        if (settings.getBoolean("Afk Settings.Teleport Afk Players")) {
+            player.teleport(afkPlayers.get(player.getName()));
+        }
+
+        Bukkit.getOnlinePlayers().forEach(onlinePlayer -> onlinePlayer.showPlayer(player));
+        player.sendMessage(formatAll(languageManager.getConfig().getString("General.You Are Not Afk")));
+        afkPlayers.remove(player.getName());
     }
 
     public static UltimateAfk getInstance() {
@@ -179,12 +199,16 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
         languageManager.reload();
     }
 
-    public HashMap<String, Long> getAfkPlayers() {
+    public HashMap<String, Location> getAfkPlayers() {
         return afkPlayers;
     }
 
+    public HashMap<String, Long> getPlayers() {
+        return players;
+    }
+
     public boolean isAfk(String playerName) {
-        return afkPlayers.get(playerName) - System.currentTimeMillis() > settings.getInt("Afk Settings.Idle Time Until Afk");
+        return players.get(playerName) - System.currentTimeMillis() > settings.getInt("Afk Settings.Idle Time Until Afk");
     }
 
     @Override

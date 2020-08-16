@@ -18,10 +18,10 @@ public class PlayerItemBreakListener implements Listener, MessageUtils {
     @EventHandler
     public void onItemBreak(PlayerItemBreakEvent event) {
         Player player = event.getPlayer();
-        if (instance.isAfk(player.getName())) {
-            player.sendMessage(formatAll(instance.getLanguageManager().getConfig().getString("Event.Item Break Event")));
+        if (instance.getAfkPlayers().containsKey(player.getName())) {
+            instance.setNotAfk(player);
         }
-        instance.getAfkPlayers().replace(player.getName(), System.currentTimeMillis());
+        instance.getPlayers().replace(player.getName(), System.currentTimeMillis());
     }
 
 }

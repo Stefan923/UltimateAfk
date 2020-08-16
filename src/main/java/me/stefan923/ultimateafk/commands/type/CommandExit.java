@@ -4,6 +4,7 @@ import me.stefan923.ultimateafk.UltimateAfk;
 import me.stefan923.ultimateafk.commands.AbstractCommand;
 import me.stefan923.ultimateafk.utils.MessageUtils;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 
@@ -15,8 +16,11 @@ public class CommandExit extends AbstractCommand implements MessageUtils {
 
     @Override
     protected ReturnType runCommand(UltimateAfk instance, CommandSender sender, String... args) {
-        if (instance.isAfk(sender.getName())) {
-            instance.getAfkPlayers().remove(sender.getName());
+        String playerName = sender.getName();
+
+        if (instance.getPlayers().containsKey(playerName)) {
+            ((Player) sender).teleport(instance.getAfkPlayers().get(playerName));
+            instance.getAfkPlayers().remove(playerName);
             sender.sendMessage(formatAll(instance.getLanguageManager().getConfig().getString("Command.Exit.Success")));
             return ReturnType.SUCCESS;
         }
