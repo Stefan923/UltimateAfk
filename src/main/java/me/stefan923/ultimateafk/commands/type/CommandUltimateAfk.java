@@ -6,7 +6,6 @@ import me.stefan923.ultimateafk.utils.MessageUtils;
 import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class CommandUltimateAfk extends AbstractCommand implements MessageUtils {
