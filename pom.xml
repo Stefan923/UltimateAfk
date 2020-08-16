@@ -25,26 +25,16 @@
     </repositories>
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
-                <directory>src</directory>
-                <includes>
-                    <include>**/*.java</include>
-                    <include>**/*.yml</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src</directory>
-                <includes>
-                    <include>**/*.java</include>
-                    <include>**/*.yml</include>
-                </includes>
+                <filtering>true</filtering>
+                <directory>src/main/resources/</directory>
             </resource>
         </resources>
         <finalName>UltimateAfk - ${project.version}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
