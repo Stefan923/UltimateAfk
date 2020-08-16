@@ -4,8 +4,8 @@ import me.stefan923.ultimateafk.UltimateAfk;
 import me.stefan923.ultimateafk.commands.AbstractCommand;
 import me.stefan923.ultimateafk.utils.MessageUtils;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,8 +31,8 @@ public class CommandUltimateAfk extends AbstractCommand implements MessageUtils 
 
     @Override
     protected List<String> onTab(UltimateAfk instance, CommandSender sender, String... args) {
-        if (sender.hasPermission("supercore.admin"))
-            return Collections.singletonList("reload");
+        if (sender.hasPermission("ultimateafk.admin"))
+            return Arrays.asList("reload", "setLocation");
         return null;
     }
 
@@ -43,7 +43,7 @@ public class CommandUltimateAfk extends AbstractCommand implements MessageUtils 
 
     @Override
     public String getSyntax() {
-        return "/core";
+        return "/ultimateafk";
     }
 
     @Override
