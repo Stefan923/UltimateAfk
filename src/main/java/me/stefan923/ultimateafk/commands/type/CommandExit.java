@@ -10,7 +10,7 @@ import java.util.List;
 public class CommandExit extends AbstractCommand implements MessageUtils {
 
     public CommandExit() {
-        super(null, false, "exit");
+        super(null, true, "exit");
     }
 
     @Override
