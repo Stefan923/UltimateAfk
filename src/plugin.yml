@@ -1,6 +1,6 @@
 name: UltimateAfk
 version: 1.0.0-SNAPSHOT
-main: main.java.me.Stefan923.SuperCore.SuperCore
+main: me.stefan923.ultimateafk.UltimateAfk
 description: Adds the afk status with customisable settings.
 softdepend: [PlaceholderAPI]
 authors: [Stefan923]
