@@ -83,7 +83,7 @@ public class SettingsManager {
         save();
     }
 
-    private void save() {
+    public void save() {
         try {
             config.save(cfile);
         } catch (IOException e) {
