@@ -3,6 +3,7 @@ package me.stefan923.ultimateafk.commands;
 import me.stefan923.ultimateafk.UltimateAfk;
 import me.stefan923.ultimateafk.commands.type.CommandExit;
 import me.stefan923.ultimateafk.commands.type.CommandReload;
+import me.stefan923.ultimateafk.commands.type.CommandSetLocation;
 import me.stefan923.ultimateafk.commands.type.CommandUltimateAfk;
 import me.stefan923.ultimateafk.exceptions.MissingPermissionException;
 import me.stefan923.ultimateafk.utils.MessageUtils;
@@ -26,7 +27,7 @@ public class CommandManager implements CommandExecutor, MessageUtils {
         this.plugin = plugin;
         this.tabManager = new TabManager(this);
 
-        plugin.getCommand("core").setExecutor(this);
+        plugin.getCommand("ultimateafk").setExecutor(this);
 
         FileConfiguration settings = plugin.getSettingsManager().getConfig();
 
@@ -37,6 +38,7 @@ public class CommandManager implements CommandExecutor, MessageUtils {
             addCommand(new CommandExit());
         }
         addCommand(new CommandReload(commandUltimateAfk));
+        addCommand(new CommandSetLocation(commandUltimateAfk));
 
         for (AbstractCommand abstractCommand : commands) {
             if (abstractCommand.getParent() != null) continue;
