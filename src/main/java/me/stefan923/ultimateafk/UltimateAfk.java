@@ -25,6 +25,7 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
 
     private HashMap<String, Long> players;
     private HashMap<String, Location> afkPlayers;
+    private HashMap<String, Long> cooldowns;
 
     @Override
     public void onEnable() {
@@ -39,6 +40,7 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
 
         players = new HashMap<>();
         afkPlayers = new HashMap<>();
+        cooldowns = new HashMap<>();
 
         sendLogger("&8&l> &7&m------- &8&l( &3&lUltimateAfk &b&lby Stefan923 &8&l) &7&m------- &8&l<");
         sendLogger("&b   Plugin has been initialized.");
@@ -205,6 +207,10 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
 
     public HashMap<String, Long> getPlayers() {
         return players;
+    }
+
+    public HashMap<String, Long> getCooldowns() {
+        return cooldowns;
     }
 
     public boolean isAfk(String playerName) {

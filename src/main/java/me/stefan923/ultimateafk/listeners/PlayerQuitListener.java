@@ -19,6 +19,7 @@ public class PlayerQuitListener implements Listener, MessageUtils {
         String playerName = event.getPlayer().getName();
         instance.getAfkPlayers().remove(playerName);
         instance.getPlayers().remove(playerName);
+        instance.getCooldowns().remove(playerName);
     }
 
 }
