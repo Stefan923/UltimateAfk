@@ -15,5 +15,5 @@ commands:
 
 permissions:
   ultimateafk.admin:
-    description: Acces to powerfull commands, like /core reload.
+    description: Acces to powerfull commands, like reload, configuration commands.
     default: op
