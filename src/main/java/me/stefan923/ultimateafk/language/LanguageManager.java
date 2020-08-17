@@ -1,12 +1,10 @@
 package me.stefan923.ultimateafk.language;
 
 import me.stefan923.ultimateafk.UltimateAfk;
-import me.stefan923.ultimateafk.settings.SettingsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +19,7 @@ public class LanguageManager {
     }
 
     public void setup(UltimateAfk instance) {
-        cfile = new File(instance.getDataFolder(), "settings.yml");
+        cfile = new File(instance.getDataFolder(), "language.yml");
         config = YamlConfiguration.loadConfiguration(cfile);
 
         config.options().header("UltimateAfk by Stefan923\n");
