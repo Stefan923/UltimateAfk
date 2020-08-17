@@ -57,9 +57,11 @@ public class SettingsManager {
     }
 
     public void resetConfig() {
+        config.set("Enabled Commands.Afk", true);
         config.set("Enabled Commands.Exit", true);
         config.set("Afk Settings.Idle Time Until Afk", 300);
         config.set("Afk Settings.Teleport Afk Players", true);
+        config.set("Afk Settings.Afk Command Cooldown", 120);
         config.set("Afk Settings.Disable On Bed Enter", true);
         config.set("Afk Settings.Disable On Bucket Empty", true);
         config.set("Afk Settings.Disable On Bucket Fill", true);
