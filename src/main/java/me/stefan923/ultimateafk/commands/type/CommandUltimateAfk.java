@@ -21,7 +21,7 @@ public class CommandUltimateAfk extends AbstractCommand implements MessageUtils 
         sendCenteredMessage(sender, formatAll("&3&lUltimateAfk &f&lv" + instance.getDescription().getVersion()));
         sendCenteredMessage(sender, formatAll("&8&l» &fPlugin author: &bStefan923"));
         sendCenteredMessage(sender, formatAll(" "));
-        sendCenteredMessage(sender, formatAll("&8&l» &fProvides a core set of commands and server utilities."));
+        sendCenteredMessage(sender, formatAll("&8&l» &fAdds the afk status with customisable settings."));
         sendCenteredMessage(sender, formatAll("&8&m--+----------------------------------------+--&r"));
         sender.sendMessage(formatAll(" "));
 
