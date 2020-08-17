@@ -9,6 +9,8 @@ commands:
   ultimateafk:
     description: Infos about this plugin.
     aliases: [uafk]
+  afk:
+    description: Sets own status to AFK.
   exit:
     description: Exits afk status.
     aliases: [ultimateafkexit, uafkexit]
@@ -16,4 +18,7 @@ commands:
 permissions:
   ultimateafk.admin:
     description: Acces to powerfull commands, like reload, configuration commands.
+    default: op
+  ultimateafk.afk:
+    description: Acces to /afk command.
     default: op

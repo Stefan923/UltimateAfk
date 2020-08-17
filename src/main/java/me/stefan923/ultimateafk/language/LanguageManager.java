@@ -23,6 +23,8 @@ public class LanguageManager {
         config = YamlConfiguration.loadConfiguration(cfile);
 
         config.options().header("UltimateAfk by Stefan923\n");
+        config.addDefault("Command.Afk.Already Afk", "&8(&3!&8) &fYou are &balready &fafk!");
+        config.addDefault("Command.Afk.Cooldown", "&8(&3!&8) &cYou should wait &4%time% seconds &cbefore using the command again!");
         config.addDefault("Command.Exit.Not Afk", "&8(&3!&8) &fYou are &bnot &fafk!");
         config.addDefault("Command.Exit.Success", "&8(&3!&8) &fYou have typed &3/exit&f. You are &bNOT afk &fanymore!");
         config.addDefault("Command.SetLocation.Success", "&8(&3!&8) &fYou have set a &bnew location &fwhere to teleport afk players.");
@@ -40,7 +42,8 @@ public class LanguageManager {
         return config;
     }
 
-    public void resetConfig() {
+    public void reset() {
+        config.set("Command.Afk.Cooldown", "&8(&3!&8) &cYou should wait &4%time% seconds &cbefore using the command again!");
         config.set("Command.Exit.Not Afk", "&8(&3!&8) &fYou are &bnot &fafk!");
         config.set("Command.Exit.Success", "&8(&3!&8) &fYou have typed &3/exit&f. You are &bNOT afk &fanymore!");
         config.set("Command.SetLocation.Success", "&8(&3!&8) &fYou have set a &bnew location &fwhere to teleport afk players.");

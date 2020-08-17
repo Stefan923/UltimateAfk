@@ -1,10 +1,7 @@
 package me.stefan923.ultimateafk.commands;
 
 import me.stefan923.ultimateafk.UltimateAfk;
-import me.stefan923.ultimateafk.commands.type.CommandExit;
-import me.stefan923.ultimateafk.commands.type.CommandReload;
-import me.stefan923.ultimateafk.commands.type.CommandSetLocation;
-import me.stefan923.ultimateafk.commands.type.CommandUltimateAfk;
+import me.stefan923.ultimateafk.commands.type.*;
 import me.stefan923.ultimateafk.exceptions.MissingPermissionException;
 import me.stefan923.ultimateafk.utils.MessageUtils;
 import org.bukkit.command.Command;
@@ -33,6 +30,10 @@ public class CommandManager implements CommandExecutor, MessageUtils {
 
         AbstractCommand commandUltimateAfk = addCommand(new CommandUltimateAfk());
 
+        if (settings.getBoolean("Enabled Commands.Afk")) {
+            plugin.getCommand("afk").setExecutor(this);
+            addCommand(new CommandAfk());
+        }
         if (settings.getBoolean("Enabled Commands.Exit")) {
             plugin.getCommand("exit").setExecutor(this);
             addCommand(new CommandExit());
