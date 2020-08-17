@@ -174,7 +174,12 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
                 sendLogger(formatAll(languageManager.getConfig().getString("General.Afk Location Not Set")));
             }
         }
-        Bukkit.getOnlinePlayers().forEach(onlinePlayer -> onlinePlayer.hidePlayer(player));
+        Bukkit.getOnlinePlayers().forEach(onlinePlayer -> {
+            onlinePlayer.hidePlayer(player);
+            if (settings.getBoolean("Afk Settings.Announce Afk Players")) {
+                onlinePlayer.sendMessage(formatAll(languageManager.getConfig().getString("General.Is Afk").replace("%player_name%", player.getName())));
+            }
+        });
         player.sendMessage(formatAll(languageManager.getConfig().getString("General.You Are Afk")));
     }
 
@@ -183,7 +188,12 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
             player.teleport(afkPlayers.get(player.getName()));
         }
 
-        Bukkit.getOnlinePlayers().forEach(onlinePlayer -> onlinePlayer.showPlayer(player));
+        Bukkit.getOnlinePlayers().forEach(onlinePlayer -> {
+            onlinePlayer.showPlayer(player);
+            if (settings.getBoolean("Afk Settings.Announce Afk Players")) {
+                onlinePlayer.sendMessage(formatAll(languageManager.getConfig().getString("General.Is Not Afk").replace("%player_name%", player.getName())));
+            }
+        });
         player.sendMessage(formatAll(languageManager.getConfig().getString("General.You Are Not Afk")));
         afkPlayers.remove(player.getName());
     }

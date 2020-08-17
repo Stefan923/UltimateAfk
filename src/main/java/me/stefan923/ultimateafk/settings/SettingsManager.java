@@ -28,6 +28,7 @@ public class SettingsManager {
         config.addDefault("Enabled Commands.Afk", true);
         config.addDefault("Enabled Commands.Exit", true);
         config.addDefault("Afk Settings.Afk Command Cooldown", 120);
+        config.addDefault("Afk Settings.Announce Afk Players", true);
         config.addDefault("Afk Settings.Idle Time Until Afk", 300);
         config.addDefault("Afk Settings.Teleport Afk Players", true);
         config.addDefault("Afk Settings.Disable On Bed Enter", true);

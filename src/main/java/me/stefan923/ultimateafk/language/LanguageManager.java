@@ -31,6 +31,8 @@ public class LanguageManager {
         config.addDefault("Command.SetLocation.Not Enabled", "&8(&3!&8) &fTeleporting afk players is &bnot enabled &fin &3settings.yml&f.");
         config.addDefault("General.Afk Location Not Set", "&8(&3!&8) &cThe AFK location for &4UltimateAfk &cis not set!");
         config.addDefault("General.Invalid Command Syntax", "&8(&3!&8) &cInvalid Syntax or you have no permission!\n&8(&3!&8) &fThe valid syntax is: &b%syntax%");
+        config.addDefault("General.Is Afk", "&8(&3!&8) &b%player_name% &fis now afk.");
+        config.addDefault("General.Is Not Afk", "&8(&3!&8) &b%player_name% &fis no longer afk.");
         config.addDefault("General.No Permission", "&8(&3!&8) &cYou need the &4%permission% &cpermission to do that!");
         config.addDefault("General.You Are Afk", "&8(&3!&8) &fYou are &bafk &fnow! Use &3/exit &f or &3move &fto return to spawn.");
         config.addDefault("General.You Are Not Afk", "&8(&3!&8) &fYou did an action, so you are &bno longer afk&f!");
