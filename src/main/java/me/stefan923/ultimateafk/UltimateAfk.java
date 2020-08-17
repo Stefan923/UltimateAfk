@@ -157,7 +157,7 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
         }, 600, 600);
     }
 
-    private void setAfk(Player player) {
+    public void setAfk(Player player) {
         afkPlayers.put(player.getName(), player.getLocation());
 
         if (settings.getBoolean("Afk Settings.Teleport Afk Players")) {
