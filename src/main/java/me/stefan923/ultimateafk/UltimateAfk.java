@@ -208,7 +208,7 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
     }
 
     public boolean isAfk(String playerName) {
-        return players.get(playerName) - System.currentTimeMillis() > settings.getInt("Afk Settings.Idle Time Until Afk");
+        return (System.currentTimeMillis() - players.get(playerName)) / 1000 > settings.getInt("Afk Settings.Idle Time Until Afk");
     }
 
     @Override
