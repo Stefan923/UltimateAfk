@@ -18,7 +18,7 @@ public class CommandExit extends AbstractCommand implements MessageUtils {
     protected ReturnType runCommand(UltimateAfk instance, CommandSender sender, String... args) {
         String playerName = sender.getName();
 
-        if (instance.getPlayers().containsKey(playerName)) {
+        if (instance.getAfkPlayers().containsKey(playerName)) {
             ((Player) sender).teleport(instance.getAfkPlayers().get(playerName));
             instance.getAfkPlayers().remove(playerName);
             sender.sendMessage(formatAll(instance.getLanguageManager().getConfig().getString("Command.Exit.Success")));
