@@ -34,6 +34,8 @@ public class LanguageManager {
         config.addDefault("General.No Permission", "&8(&3!&8) &cYou need the &4%permission% &cpermission to do that!");
         config.addDefault("General.You Are Afk", "&8(&3!&8) &fYou are &bafk &fnow! Use &3/exit &f or &3move &fto return to spawn.");
         config.addDefault("General.You Are Not Afk", "&8(&3!&8) &fYou did an action, so you are &bno longer afk&f!");
+        config.addDefault("PlaceholderAPI Hook.Yes", "&ayes");
+        config.addDefault("PlaceholderAPI Hook.No", "&cno");
         config.options().copyDefaults(true);
         save();
     }

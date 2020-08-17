@@ -1,6 +1,7 @@
 package me.stefan923.ultimateafk;
 
 import me.stefan923.ultimateafk.commands.CommandManager;
+import me.stefan923.ultimateafk.hooks.PlaceholderAPIHook;
 import me.stefan923.ultimateafk.language.LanguageManager;
 import me.stefan923.ultimateafk.listeners.*;
 import me.stefan923.ultimateafk.settings.SettingsManager;
@@ -47,6 +48,12 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
         sendLogger("&b   Version: &3v" + getDescription().getVersion());
         sendLogger("&b   Enabled listeners: &3" + enableListeners());
         sendLogger("&b   Enabled commands: &3" + enableCommands());
+        if (this.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            new PlaceholderAPIHook(instance).register();
+            sendLogger("&b   Placeholders: &aEnabled");
+        } else {
+            sendLogger("&b   Placeholders: &aDisabled");
+        }
         sendLogger("&8&l> &7&m------- &8&l( &3&lUltimateAfk &b&lby Stefan923 &8&l) &7&m------- &8&l<");
 
         afkCheck();
