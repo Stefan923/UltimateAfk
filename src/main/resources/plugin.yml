@@ -1,5 +1,5 @@
 name: UltimateAfk
-version: 1.0.0-SNAPSHOT
+version: 1.0.0
 main: me.stefan923.ultimateafk.UltimateAfk
 description: Adds the afk status with customisable settings.
 softdepend: [PlaceholderAPI]
