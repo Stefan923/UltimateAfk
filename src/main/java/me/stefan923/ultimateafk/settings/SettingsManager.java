@@ -31,6 +31,7 @@ public class SettingsManager {
         config.addDefault("Afk Settings.Announce Afk Players", true);
         config.addDefault("Afk Settings.Idle Time Until Afk", 300);
         config.addDefault("Afk Settings.Teleport Afk Players", true);
+        config.addDefault("Afk Settings.Use Titles", true);
         config.addDefault("Afk Settings.Disable On Bed Enter", true);
         config.addDefault("Afk Settings.Disable On Bucket Empty", true);
         config.addDefault("Afk Settings.Disable On Bucket Fill", true);

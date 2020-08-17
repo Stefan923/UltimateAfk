@@ -38,6 +38,8 @@ public class LanguageManager {
         config.addDefault("General.You Are Not Afk", "&8(&3!&8) &fYou did an action, so you are &bno longer afk&f!");
         config.addDefault("PlaceholderAPI Hook.Yes", "&ayes");
         config.addDefault("PlaceholderAPI Hook.No", "&cno");
+        config.addDefault("Titles.Afk.Title", "&fYou are now &bAFK&f.");
+        config.addDefault("Titles.Afk.Subtitle", "&fUse &3/exit &for &3move &fto change your status.");
         config.options().copyDefaults(true);
         save();
     }

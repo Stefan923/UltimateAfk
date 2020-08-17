@@ -4,6 +4,7 @@ import me.stefan923.ultimateafk.commands.CommandManager;
 import me.stefan923.ultimateafk.hooks.PlaceholderAPIHook;
 import me.stefan923.ultimateafk.language.LanguageManager;
 import me.stefan923.ultimateafk.listeners.*;
+import me.stefan923.ultimateafk.nms.Title;
 import me.stefan923.ultimateafk.settings.SettingsManager;
 import me.stefan923.ultimateafk.utils.LocationUtils;
 import me.stefan923.ultimateafk.utils.MessageUtils;
@@ -28,6 +29,8 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
     private HashMap<String, Location> afkPlayers;
     private HashMap<String, Long> cooldowns;
 
+    private Title title;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -42,6 +45,8 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
         players = new HashMap<>();
         afkPlayers = new HashMap<>();
         cooldowns = new HashMap<>();
+
+        title = new Title();
 
         sendLogger("&8&l> &7&m------- &8&l( &3&lUltimateAfk &b&lby Stefan923 &8&l) &7&m------- &8&l<");
         sendLogger("&b   Plugin has been initialized.");
@@ -157,6 +162,9 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
     private void afkCheck() {
         getServer().getScheduler().scheduleAsyncRepeatingTask(instance, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
+                if (settings.getBoolean("Afk Settings.Use Titles") && afkPlayers.containsKey(player.getName())) {
+                    title.send(player, formatAll(languageManager.getConfig().getString("Titles.Afk.Title")), formatAll(languageManager.getConfig().getString("Titles.Afk.Subtitle")), 5, 600, 10);
+                }
                 if (isAfk(player.getName()) && !afkPlayers.containsKey(player.getName())) {
                     setAfk(player);
                 }
@@ -182,12 +190,18 @@ public class UltimateAfk extends JavaPlugin implements MessageUtils, LocationUti
                 }
             }
         });
+
+        title.send(player, formatAll(languageManager.getConfig().getString("Titles.Afk.Title")), formatAll(languageManager.getConfig().getString("Titles.Afk.Subtitle")), 5, 600, 10);
         player.sendMessage(formatAll(languageManager.getConfig().getString("General.You Are Afk")));
     }
 
     public void setNotAfk(Player player) {
         if (settings.getBoolean("Afk Settings.Teleport Afk Players")) {
             player.teleport(afkPlayers.get(player.getName()));
+        }
+
+        if (settings.getBoolean("Afk Settings.Use Titles") && afkPlayers.containsKey(player.getName())) {
+            title.send(player, "", "", 0, 1, 0);
         }
 
         Bukkit.getOnlinePlayers().forEach(onlinePlayer -> {
