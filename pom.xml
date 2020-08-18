@@ -4,9 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>UltimateAfk</artifactId>
+    <groupId>me.stefan923</groupId>
+    <artifactId>ultimateafk</artifactId>
     <version>1.0.2</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -34,6 +35,12 @@
         </repository>
     </repositories>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd--HH-mm</maven.build.timestamp.format>
+    </properties>
+
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
@@ -43,6 +50,7 @@
             </resource>
         </resources>
         <finalName>UltimateAfk - ${project.version}</finalName>
+        <defaultGoal>clean install deploy</defaultGoal>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
