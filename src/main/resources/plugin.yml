@@ -1,8 +1,8 @@
 name: UltimateAfk
-version: 1.0.2
+version: ${project.version}
 main: me.stefan923.ultimateafk.UltimateAfk
 description: Adds the afk status with customisable settings.
-softdepend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI,ViaVersion]
 authors: [Stefan923]
 
 commands:
