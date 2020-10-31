@@ -6,21 +6,20 @@ import me.stefan923.ultimateafk.utils.User;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import us.myles.ViaVersion.api.Via;
 import us.myles.ViaVersion.api.ViaAPI;
-import us.myles.ViaVersion.api.protocol.ProtocolVersion;
 
-public class PlayerQuitListener implements Listener, MessageUtils {
+public class PlayerKickListener implements Listener, MessageUtils {
 
     private final UltimateAfk instance;
 
-    public PlayerQuitListener(UltimateAfk instance) {
+    public PlayerKickListener(UltimateAfk instance) {
         this.instance = instance;
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent event) {
+    public void onKick(PlayerKickEvent event) {
         Player player = event.getPlayer();
         String playerName = player.getName();
         instance.getAfkPlayers().remove(playerName);
