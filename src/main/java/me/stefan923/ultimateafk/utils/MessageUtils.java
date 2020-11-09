@@ -34,12 +34,12 @@ public interface MessageUtils {
         Bukkit.getConsoleSender().sendMessage(formatAll(string));
     }
 
-    default void sendCenteredMessage(CommandSender player, String message) {
-        if (message == null || message.equals("")) {
+    default void sendCenteredMessage(CommandSender player, String string) {
+        if (string == null || string.equals("")) {
             player.sendMessage("");
             return;
         }
-        message = ChatColor.translateAlternateColorCodes('&', message);
+        String message = ChatColor.translateAlternateColorCodes('&', string);
 
         int messagePxSize = 0;
         boolean previousCode = false;

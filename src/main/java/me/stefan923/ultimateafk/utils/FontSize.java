@@ -99,8 +99,8 @@ public enum FontSize {
     SPACE(' ', 3),
     DEFAULT('a', 4);
 
-    private char character;
-    private int length;
+    private final char character;
+    private final int length;
 
     FontSize(char character, int length) {
         this.character = character;

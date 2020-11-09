@@ -11,7 +11,7 @@ public interface LocationUtils {
     }
 
     default Location deserializeLocation(String string) {
-        if (string == null || string.trim() == "") {
+        if (string.equals("") || string.trim().equals("")) {
             return null;
         }
 

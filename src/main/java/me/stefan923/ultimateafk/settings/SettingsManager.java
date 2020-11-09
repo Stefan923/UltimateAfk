@@ -1,6 +1,5 @@
 package me.stefan923.ultimateafk.settings;
 
-import me.stefan923.ultimateafk.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;

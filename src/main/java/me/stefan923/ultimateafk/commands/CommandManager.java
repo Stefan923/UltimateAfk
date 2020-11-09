@@ -17,12 +17,11 @@ import java.util.List;
 public class CommandManager implements CommandExecutor, MessageUtils {
 
     private static final List<AbstractCommand> commands = new ArrayList<>();
-    private UltimateAfk plugin;
-    private TabManager tabManager;
+    private final UltimateAfk plugin;
 
     public CommandManager(UltimateAfk plugin) {
         this.plugin = plugin;
-        this.tabManager = new TabManager(this);
+        TabManager tabManager = new TabManager(this);
 
         plugin.getCommand("ultimateafk").setExecutor(this);
 
@@ -55,7 +54,7 @@ public class CommandManager implements CommandExecutor, MessageUtils {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         for (AbstractCommand abstractCommand : commands) {
-            if (abstractCommand.getCommand() != null && abstractCommand.getCommand().equalsIgnoreCase(command.getName().toLowerCase())) {
+            if (abstractCommand.getCommand() != null && abstractCommand.getCommand().equalsIgnoreCase(command.getName())) {
                 if (strings.length == 0 || abstractCommand.hasArgs()) {
                     processRequirements(abstractCommand, commandSender, strings);
                     return true;
