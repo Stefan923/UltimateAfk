@@ -1,4 +1,5 @@
-# UltimateAfk
+# UltimateAfk 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d85fd8be01a946c89143686ffcb66939)](https://www.codacy.com/gh/Stefan923/UltimateAfk/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Stefan923/UltimateAfk&amp;utm_campaign=Badge_Grade)
 
 UltimateAfk is a Minecraft plugin for Bukkit servers that implements the AFK status for inactive players.
 This resource is free, open-source and under development. Any suggestion is welcome.
